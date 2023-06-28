@@ -21,27 +21,27 @@
 
 
 ### 1960s
-[Larry Roberts' Block World]
+<b>[Larry Roberts' Block World]</b>
  - 사물들을 기하학적 모양으로 단순화하고, 이를 통해 시각적 세상을 재구성하는 연구를 진행하였다.
 
 ### 1966
-[MIT Summer Project]
+<b>[MIT Summer Project]</b>
  - 이 기간동안 대부분의 시각 체계를 구현하고자 했다.
 
 ### 1970s
-[David Marr's Vision]
+<b>[David Marr's Vision]</b>
  - David Marr는 그가 비전을 무엇이라 생각하는지, 어떤 방향으로 컴퓨터 비전이 나아가야 하는지, 컴퓨터가 비전을 인식하기 위해 어떤 방향으로 알고리즘을 개발해야 하는지에 대해 책을 저술하였다.
 그는 이 책에서 "최종적인 full 3D 표현"으로 만들려면 몇 단계의 과정을 거쳐야 한다고 하였다.
 첫 단계는 "Primal Sketch"라고 하는 단계이다. 이 과정은 가장자리, 막대, 끝, 가상의 선, 커브, 경계가 표현되는 과정이고, 이는 신경 과학자들에게 영감을 받은 것이다. 이것은 Hubel&Wiesel의 말과도 비슷하다.
 그리고 다음 단계는 "2.5D Sketch"라는 단계이며, 이 단계는 시각 장면을 구성하는 표면, 깊이, 레이어, 불연속 점등의 정보를 종합하는 것이다.
 마지막으로 이것들을 한 곳에 모아 surface and volumetric primives 형태의 계층적으로 조직화된 최종 3D 모델을 만들어 내는 것이다.
 
-[Stanford & SRI]
+<b>[Stanford & SRI]</b>
  - 과학자들이 "generalized cylinder", "pictorial structure" 아이디어를 제안했다. 이 두가지의 공통 기본 개념은 "모든 객체는 단순한 기하학적 형태로 표현할 수 있다"는 것이다. 
 이 두 방법 모두 단순한 모양과 기하학적 구성을 이용하여 복잡한 객체를 단순화시켰다. 
 
 ### 1980s
-[David Lowe]
+<b>[David Lowe]</b>
  - David Lowe는 어떻게 하면 단순한 구조로 실제 세계를 재구성/인식할 수 있을 지 고민 했고, 이 연구에서 면도기를 인식하기 위해서 선, 경계, 직선을 조합하여 면도기를 구성해냈다.
 
 
@@ -52,32 +52,33 @@
 
 
 ### 1999/2000s
-[기계학습/통계적 기계학습]
+<b>[기계학습/통계적 기계학습]</b>
 
-["Support Vector Machine", "Boosting", "Graphical models", "Neural Network"]
+<b>["Support Vector Machine", "Boosting", "Graphical models", "Neural Network"]</b>
 
-[Paul Viola & AdaBoost]
+<b>[Paul Viola & AdaBoost]</b>
  - 실시간 얼굴 인식을 성공시켰다.
 
-[Fujifilm]
+<b>[Fujifilm]</b>
  - 실시간 얼굴을 지원하는 최초 디지털 카메라를 선보였다.
 
-[David Lowe's SIFT feature]
+<b>[David Lowe's SIFT feature]</b>
 - 객체의 특징 중 일부는 다양한 변화에 좀 더 강인하고 불변한다는 점을 발견하고, 객체 인식은 객체에서 이와 같은 중요한 특징을 찾아 내어 그 특징들을 다른 객체에 매칭시키는 과제로 만들었다.
 이미지에 존재하는 특징을 사용하게 되면서 컴퓨터 비전은 또 한 번의 도약을 하였고, 장면 전체를 인식하기에 이르렀다.
 
-[Spatial Pyramid Matching, Support Vector Algorithm]
+<b>[Spatial Pyramid Matching, Support Vector Algorithm]</b>
 
 
 * 21세기에는 인터넷과 카메라의 발전으로 실험 데이터의 질이 급격히 상승했다. 이 때부터 양질의 데이터 셋을 모으기 위한 움직임이 이어졌다.
 
-[PASCAL Visual Object Challenge(VOC)]
+<b>[PASCAL Visual Object Challenge(VOC)]</b>
  - 이 데이터 셋에는 20개의 클래스가 있었고, 클래스 당 수천 수만 개의 이미지들이 있었으며 이것 알고리즘 테스트에 사용되었다.
 
-[ImageNet]
+<b>[ImageNet]</b>
  - 가장 큰 데이터 셋을 만들어 Overfitting을 방지하고 일반화 능력을 키워 이 세상 모든 객체들을 인식할 준비를 하였다. 
 ILSVRC 대회를 열어 해당 데이터 셋으로 지속적인 알고리즘 테스트를 진행하였다. 여기서 낸 실험 결과에서 주목해야할 것은 2012년도의 CNN이다.
 CNN이 오류율을 약 10% 초반으로 감소시킨 것을 확인할 수 있었다.
+
 
 
 따라서, 이 수업에서는 CNN에 대하여 중점적으로 배울 것이다. 이 수업에서는 "image classification", "object detection", "image captioning"에 대해 다룰 것이다.
