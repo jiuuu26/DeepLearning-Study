@@ -1,4 +1,4 @@
-![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/ee6c06e4-55e3-46b8-bf54-d7ea42be10a2)![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/0c8c9bf1-dcff-4b1e-9aa5-6a1248da8f21)# 📝 Lecture 2. Image Classification pipeline <br></br>
+# 📝 Lecture 2. Image Classification pipeline <br></br>
 ## 🔎 Image Classification
 &nbsp; 우리는 다음의 사진을 보고 고양이라고 인식을 하지만 컴퓨터는 고양이라고 인식하지 못한다. 컴퓨터에게는 이것이 오직 아주 큰 격자 모양의 숫자 집합으로 보인다. 이 사진에서 카메라의 구도가 조금이라도 바뀌거나 고양이가 자세를 바꾸면 픽셀 값이 아주 크게 달라질 것이다. 그렇지만 이것이 고양이라는 사실은 달라지지 않는다. 그래서 어떠한 상황에 고양이가 있든 이것을 고양이라고 알아차릴 수 있는 알고리즘을 만들어야 한다.  
  ![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/7f698a2d-f64a-4150-a748-d03bee2c56f2)
