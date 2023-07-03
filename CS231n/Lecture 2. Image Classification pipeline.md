@@ -58,9 +58,39 @@
 
 ![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/39282980-b9c4-4e0e-930b-8fb23ca738e9)
 
-1477/40
+&nbsp; 세번째 방법으로는 데이터 셋을 세 부분으로 나누는 것이다. 데이터 셋의 대부분은 train, 일부는 validation, test로 나누는 것이다.(Idea #3) 그 후 다양한 hyperparameter로 training set을 학습시키고 validation으로 검증을 한 후, validation에서 가장 좋은 결과를 낸 hyperparameter을 선택한다. test에서는 이것을 가지고 딱 한 번만 수행을 한다. 우리가 정직하고 공정하게 수치를 측정했다는 것을 보장하기 위해서는 test를 마지막 쯤에 한 번 사용해야한다. 그래서 validation data와 test data를 엄격하게 나누는 것은 아주 중요하다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/b2988b5d-a227-4a18-89e6-755181b460a9)
+
+&nbsp; 추가로 또 다른 hyperparameter 선택 방법은 cross-validation(교차 검증)이라는 방법이다.(Idea #4) 이것은 data set이 작을 때 주로 사용하고 딥러닝에서는 많이 사용하지 않는다. 이 방법에서는 우선 test data를 정한 후 나머지를 train 여러 부분으로 나누어 주고나서, 번갈아가면서 하나씩 validation으로 지정해준다. 이렇게 순환하면서 알고리즘을 평가하고 최적의 hyperparameter을 찾아주는 방법이다. 딥러닝은 학습 자체의 계산량이 많기 때문에 실제로 이 방법을 잘 쓰지 않는다.
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/cefa9c7b-3ae2-4377-81ef-b61921b9520f)
+
+✔️ 참고로 training과 validation의 차이는 전자의 레이블은 볼 수 있지만, 후자의 레이블은 볼 수 없다는 것이다. validation의 레이블은 알고리즘이 얼마나 잘 동작하는지를 확인할 때만 사용한다. 
+
+&nbsp; 앞서 말했다시피 실제로 입력이 이미지일 때 k-NN classifier을 잘 사용하지 않는다. 첫번째 이유는 k-nn이 너무 느리기 때문이다. 그리고 두번째 이유는 L1/L2 distance가 이미지 간의 거리를 측정하기에 적절하지 않기 때문이다. L1/L2와 같은 벡터 간 거리 측정 관련 함수들은 이미지 간의 "지각적 유사성"을 측정하는 척도로는 적정하지 않다. 다음의 이미지들의 Euclidean Distance을 측정해보면 모두 동일한 L2 Distance을 가지는데, 이는 이것이 지각적 유사성을 측정하기에 적합하지 않다는 것을 뜻한다.
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/67ce4f18-9770-4ccd-a4a4-3cd2ba5481b0)
+
+
+&nbsp; k-nn의 또 다른 세번째 문제는 k-nn이 잘 동작하기 위해서는 전체 공간을 조밀하게 커버할 만큼의 충분한 training sample이 필요하다는 것인데, 이 샘플의 양은 차원이 증가하면서 기하급수적으로 증가하기 때문에 좋지 않다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/a765ab69-86fc-4704-8078-056e10306591)
 
 
 ## 🔎 Linear Classification
+&nbsp; Linear Classification은 아주 간단한 알고리즘이지만, 굉장히 중요한 NN & CNN의 기반 알고리즘이다. Linear Classification은 "parametic model"의 가장 단순한 형태이다. parametic model에는 두 가지 요소 x, W가 있다. 입력 이미지 x와 가중치를 뜻하는 W이다. 우리는 50,000여개의 샘플을 가진 CIFAR-10과 3가지 컬러의 32x32 픽셀에 Linear Classification으로 접근해볼 것이다. 그러기 위해서 우리는 함수를 작성해야하는데, 앞서 말한 x와 W를 가지고 CIFAR-10의 카테고리인 10개의 숫자를 출력해야한다. 여기서 출력하는 숫자는 각 카테고리의 스코어인데, 한 카테고리의 스코어가 높다면 이미지 x가 해당 카테고리일 확률이 크다는 것을 의미한다. 
 
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/5c13a059-4f02-4156-9281-44459522dd92)
+
+&nbsop; parametic approach에서는 training data의 정보를 요약하여 이것을 parameter인 W에 모아준다. 이러한 방식을 이용하면 test time에서 training data가 필요하지 않고 W만 있으면 된다. 이 방법은 스마트폰 같은 작은 디바이스에서 모델을 동작시킬 때 효율적이다. 따라서 딥러닝은 어떤 식으로 가중치 W와 데이터 x를 잘 조합할지 함수 F를 적절히 잘 설계하는 일이라고 할 수 있다. 이렇게 F를 설계하는 일이 모두 NN 아키텍처를 설계하는 과정이고, F 설계법 중 가장 간단한 방법은 W와 x를 단순히 곱하는 것이다. 이것이 바로 F(x,W) = Wx, 즉 Linear Classification이다.  
+&nbsop; 다음으로 이것의 차원을 살펴보면, 입력 이미지 X는 32 x 32 x 3이다. 이 값을 길게 펴서 열 벡터로 만들면 3,072-dim 벡터가 된다. 그리고 이 3072-dim 벡터가 10 classes 스코어가 되어야 한다. 따라서 행렬 W는 10 x 3072이 되어야 하는 것이다. 그러고 W와 x를 곱하면 10 x 1 짜리 하나의 열 벡터를 얻게 된다. 여기서 가끔 10-dim 벡터인 "Bias"를 더해주어야 하는데, 이것은 입력과 직접 연결되지 않고 데이터와 무관하게 특정 클래스에 우선권을 부여하는 역할을 한다. 예를 들어 고양이 데이터가 개 데이터보다 훨씬 많은 상황에서 고양이 클래스에 해당하는 Bias가 커지고, 이를 더해주는 것이다. 아래는 위의 설명을 전체 4개 픽셀의 2x2 이미지에 고양이, 강아지, 배 총 3가지 클래스가 있다고 가정한 뒤 함수가 어떻게 작동하는지를 나타낸 것이다. 가중치 행렬 W는 4x3 행렬이 되며, 3-dim bias 벡터가 있다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/3b007293-91d9-4f2a-8ca5-e2ace4858588)
+
+&nbsp; 가중치 행렬 W의 행 벡터와 이미지 X 열벡터 간의 내적을 계산하는 것인데, 여기서 내적은 결국 클래스 간 템플릿의 유사도를 측정하는 것과 비슷하다. 
+
+&nbsp; Linear Classifier의 문제점은 다양한 특징을 평균화시켜 한 클래스에 대해서 단 하나의 템플릿만을 학습한다는 것이다. 다음으로 Linear Classifier을 또 다른 관점으로 해석할 수 있는데, 각 이미지를 고차원 공간의 한 점이라고 생각하고 Linear Classifier을 각 클래스를 구분시켜 주는 선형 결정 경계로 해석하는 것이다. 하지만 이것으로 다음의 데이터를 선 하나로 분류하기는 힘들다. 또 맨 오른쪽 그림과 같이 한 클래스가 다양한 공간에 분포하는 Multimodal data라면 linear classifier로 해결하기 힘들어진다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/dea7b1a8-e82b-451e-9277-52e125c1692d)
 
