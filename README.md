@@ -7,4 +7,4 @@
 
 
 ### 📖 CS231n 과제
- [🗝️]
+ [🗝️](https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Assignment%201) Assignment 1
