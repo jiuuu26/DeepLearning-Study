@@ -9,7 +9,15 @@
 
 ![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/cc46563d-6a9b-4f27-8944-20280fc29ec2)
 
-1406
+&nbsp; 분류기가 트레이닝 데이터에 핏하게 된다면 모든 트레이닝 데이터를 분류해내기 위해 구불한 곡선을 만들 것이다. 하지만 이렇게 된다면 테스트 데이터에 대한 성능이 좋지 않을 것이다. 이를 해결하기 위한 방법은 regularization을 사용하는 것인데, 손실 함수에 하나의 항을 추가해주는 방법이다. 이것은 좀 더 단순한 W를 선택할 수 있도록 도와준다. 과학계에서 유명한 "Occam's Razor"이라는 말이 있는데, 이것은 우리가 다양한 가설들을 가지고 있고 이 가설들 모두가 어떤 현상에 대해 설명 가능하다면 우리는 일반적으로 더 단순한 것을 선호해야한다는 뜻이다. 단순한 것이 미래에 일어날 현상을 더 잘 설명할 가능성이 높기 때문이다. 위에서 regularization을 사용하는 이유도 이것과 같은 것이다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/23be967b-b608-4f55-87b4-6af4fd919f7f)
+
+&nbsp; Regularization에는 여러 종류가 있는데, 가장 보편적인 것은 L2 regularization이다. weight decay라고도 하며, 이것은 가중치 행렬 W의 euclidean norm에 패널티를 주는 것이다. 다음으로 L1 regularization은 L1 norm으로 w에 패널티를 주는 것이고, L1에서는 행렬 W가 희소 행렬이 되도록 한다. 그리고 Elastic net regularization이라는 것도 있는데, 이것은 L1과 L2를 섞어놓은 것이다. 또, max norm regulatization이라는 것도 있는데 이것은 L1과 L2 대신에 max norm을 사용하는 것이다. 정리하자면 regularization은 모델이 트레이닝 데이터셋에 완벽히 핏하지 못하도록 복잡도에 패널티를 부여하는 방법이다. 
+
+![image](https://github.com/jiuuu26/DeepLearning-Study/assets/110098218/109d251c-d056-4785-9960-87d1cd44e39e)
+
+1695
 
 ## 🔎 Optimization
 
