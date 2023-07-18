@@ -57,7 +57,7 @@ print('  world '.strip())  # Strip leading and trailing whitespace; prints "worl
 ```
 
 ### [Containers]
-#### Lists
+#### ✔️ Lists
 &nbsp; 파이썬에서의 배열이면서, 사이즈를 재조정하고 다른 type의 요소를 포함할 수 있다는 것이 특징이다. 여기서 pop()은 list의 마지막 요소를 제거하고 반환하는 함수이다. 
 ```python
 xs = [3, 1, 2]    # Create a list
@@ -115,11 +115,11 @@ print(even_squares)  # Prints "[0, 4, 16]"
 ```
 
 
-#### Dictionaries
+#### ✔️ Dictionaries
 
-#### Sets
+#### ✔️ Sets
 
-#### Tuples
+#### ✔️ Tuples
 
 
 ### [Functions]
