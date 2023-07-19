@@ -114,18 +114,137 @@ even_squares = [x ** 2 for x in nums if x % 2 == 0]
 print(even_squares)  # Prints "[0, 4, 16]"
 ```
 
-
 #### ✔️ Dictionaries
+&nbsp; Dictionary는 (key, value)를 가진 자바의 Map과 비슷하다. get() 함수를 이용하면 해당 key를 가지고 있다면 알맞은 value 값을 도출하고 그렇지 않다면 뒤에 작성한 값을 도출해낸다. 그리고 del() 함수를 사용하면 해당 key 값을 가진 dictionary를 삭제한다. 
+
+```python
+d = {'cat': 'cute', 'dog': 'furry'}  # Create a new dictionary with some data
+print(d['cat'])       # Get an entry from a dictionary; prints "cute"
+print('cat' in d)     # Check if a dictionary has a given key; prints "True"
+d['fish'] = 'wet'     # Set an entry in a dictionary
+print(d['fish'])      # Prints "wet"
+# print(d['monkey'])  # KeyError: 'monkey' not a key of d
+print(d.get('monkey', 'N/A'))  # Get an element with a default; prints "N/A"
+print(d.get('fish', 'N/A'))    # Get an element with a default; prints "wet"
+del d['fish']         # Remove an element from a dictionary
+print(d.get('fish', 'N/A')) # "fish" is no longer a key; prints "N/A"
+```
+<b>- Loops </b> 
+```python
+d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal in d:
+    legs = d[animal]
+    print('A %s has %d legs' % (animal, legs))
+# Prints "A person has 2 legs", "A cat has 4 legs", "A spider has 8 legs"
+```
+&nbsp; 위의 코드에서 items 메소드를 사용하면 key와 그에 맞는 value 값에 접근할 수 있다. 
+```python
+d = {'person': 2, 'cat': 4, 'spider': 8}
+for animal, legs in d.items():
+    print('A %s has %d legs' % (animal, legs))
+# Prints "A person has 2 legs", "A cat has 4 legs", "A spider has 8 legs"
+```
+<b>- Dictionary comprehension </b> 
+```python
+nums = [0, 1, 2, 3, 4]
+even_num_to_square = {x: x ** 2 for x in nums if x % 2 == 0}
+print(even_num_to_square)  # Prints "{0: 0, 2: 4, 4: 16}"
+```
 
 #### ✔️ Sets
 
-#### ✔️ Tuples
+&nbsp; Set은 순서가 없는 요소의 모음이다. set에서 add를 사용하면 set에 해당 요소가 추가 되는데, 만약 set에 이미 존재하는 요소를 추가한다면 아무 일도 발생하지 않는다. 또 len을 사용하면 해당 set에 몇개의 요소가 있는지 알 수 있고, remove 메소드를 사용하면 set에 존재하는 요소를 제거해준다. 
+```python
+animals = {'cat', 'dog'}
+print('cat' in animals)   # Check if an element is in a set; prints "True"
+print('fish' in animals)  # prints "False"
+animals.add('fish')       # Add an element to a set
+print('fish' in animals)  # Prints "True"
+print(len(animals))       # Number of elements in a set; prints "3"
+animals.add('cat')        # Adding an element that is already in the set does nothing
+print(len(animals))       # Prints "3"
+animals.remove('cat')     # Remove an element from a set
+print(len(animals))       # Prints "2"
+```
 
+<b>- Loops </b>
+&nbsp; list에서 반복한 것과 똑같이 반복문을 사용하면 된다. 하지만 set과 list의 차이는 set은 순서가 정해져 있지 않기 때문에, 반복 시 set의 순서를 정할 수도 확실히 할 수도 없다. 마찬가지로 리스트와 다르게 인덱스 번호를 사용하여 특정 값에 접근할 수 없다는 특징이 있다. 
+
+* 아래의 코드와 같이 enumerate를 사용하는 이유는 나열해서 번호를 매겨주기 위해서이다. enumerate는 반복문에서 사용하는 함수이며 enumerate를 사용하면 반복문에서 index 번호를 얻을 수 있다. 
+
+```python
+animals = {'cat', 'dog', 'fish'}
+for idx, animal in enumerate(animals):
+    print('#%d: %s' % (idx + 1, animal))
+# Prints "#1: fish", "#2: dog", "#3: cat"
+```
+
+<b>- Set comprehensions </b>
+```python
+from math import sqrt
+nums = {int(sqrt(x)) for x in range(30)}
+print(nums)  # Prints "{0, 1, 2, 3, 4, 5}"
+```
+
+#### ✔️ Tuples
+&nbsp; 튜플은 값의 순서가 변할 수 있는 list이다. list와 비슷한 부분이 많지만, 둘의 가장 큰 차이는 튜플은 dictionary의 key처럼, set의 요소처럼 사용될 수 있다는 것이다. 
+
+```python
+d = {(x, x + 1): x for x in range(10)}  # Create a dictionary with tuple keys
+t = (5, 6)        # Create a tuple
+print(type(t))    # Prints "<class 'tuple'>"
+print(d[t])       # Prints "5"
+print(d[(1, 2)])  # Prints "1"
+```
 
 ### [Functions]
+&nbsp; "def" 키워드를 사용해서 함수를 생성할 수 있다. 
+
+```python
+def sign(x):
+    if x > 0:
+        return 'positive'
+    elif x < 0:
+        return 'negative'
+    else:
+        return 'zero'
+
+for x in [-1, 0, 1]:
+    print(sign(x))
+# Prints "negative", "zero", "positive"
+```
+
+```pyhton
+def hello(name, loud=False):
+    if loud:
+        print('HELLO, %s!' % name.upper())
+    else:
+        print('Hello, %s' % name)
+
+hello('Bob') # Prints "Hello, Bob"
+hello('Fred', loud=True)  # Prints "HELLO, FRED!"
+```
 
 ### [Classes]
 
+```python
+class Greeter(object):
+
+    # Constructor
+    def __init__(self, name):
+        self.name = name  # Create an instance variable
+
+    # Instance method
+    def greet(self, loud=False):
+        if loud:
+            print('HELLO, %s!' % self.name.upper())
+        else:
+            print('Hello, %s' % self.name)
+
+g = Greeter('Fred')  # Construct an instance of the Greeter class
+g.greet()            # Call an instance method; prints "Hello, Fred"
+g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
+```
 
 ## 💡Numpy
 
