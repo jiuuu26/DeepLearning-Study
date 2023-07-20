@@ -247,10 +247,111 @@ g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"
 ```
 
 ## 💡Numpy
+&nbsp; Numpy는 파이썬에서 scientific computing에 핵심적인 라이브러리다. multidimensional array object와 이 array들을 다룰 수 있는 도구를 제공한다. 
 
 ### [Arrays]
+&nbsp; numpy의 array는 같은 type을 가진 값들이 격자로 존재하는 것이고, 이 값들은 음이 아닌 정수의 튜플로 index된다. 차원의 수는 이 array의 열(rank)이다. 그리고 array의 shape는 각 차원에 따라 array에 size를 주는 것이다. 머신러닝에서는 행렬의 차원을 shape라는 개념으로 표현한다. 
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3])   # Create a rank 1 array
+print(type(a))            # Prints "<class 'numpy.ndarray'>"
+print(a.shape)            # Prints "(3,)"
+print(a[0], a[1], a[2])   # Prints "1 2 3"
+a[0] = 5                  # Change an element of the array
+print(a)                  # Prints "[5, 2, 3]"
+
+b = np.array([[1,2,3],[4,5,6]])    # Create a rank 2 array
+print(b.shape)                     # Prints "(2, 3)"
+print(b[0, 0], b[0, 1], b[1, 0])   # Prints "1 2 4"
+```
+&nbsp; Numpy는 array를 생성할 수 있는 많은 함수를 제공한다.
+```python
+import numpy as np
+
+a = np.zeros((2,2))   # Create an array of all zeros
+print(a)              # Prints "[[ 0.  0.]
+                      #          [ 0.  0.]]"
+
+b = np.ones((1,2))    # Create an array of all ones
+print(b)              # Prints "[[ 1.  1.]]"
+
+c = np.full((2,2), 7)  # Create a constant array
+print(c)               # Prints "[[ 7.  7.]
+                       #          [ 7.  7.]]"
+
+d = np.eye(2)         # Create a 2x2 identity matrix
+print(d)              # Prints "[[ 1.  0.]
+                      #          [ 0.  1.]]"
+
+e = np.random.random((2,2))  # Create an array filled with random values
+print(e)                     # Might print "[[ 0.91940167  0.08143941]
+                             #               [ 0.68744134  0.87236687]]"
+```
 
 ### [Array indexing]
+
+<b>- Slicing </b>
+
+&nbsp; multidimensional array을 각 차원의 array로 slice할 수 있다. 아래의 코드의 b에서 보이는 것과 같이 a[:2, 1:3]은 array a의 행을 0 ~ 1(2전), 열을 1 ~ 2(3전)로 slice한 배열을 b로 정하겠다는 의미이다. 이렇게 slice된 array는 원래의 data와 같은 것인데, 그렇기 때문에 만약 b의 어떠한 값을 수정한다면 a에서도 해당 값이 변하게 된다는 특징이 있다. 
+
+```python
+import numpy as np
+
+# Create the following rank 2 array with shape (3, 4)
+# [[ 1  2  3  4]
+#  [ 5  6  7  8]
+#  [ 9 10 11 12]]
+a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
+
+# Use slicing to pull out the subarray consisting of the first 2 rows
+# and columns 1 and 2; b is the following array of shape (2, 2):
+# [[2 3]
+#  [6 7]]
+b = a[:2, 1:3]
+
+# A slice of an array is a view into the same data, so modifying it
+# will modify the original array.
+print(a[0, 1])   # Prints "2"
+b[0, 0] = 77     # b[0, 0] is the same piece of data as a[0, 1]
+print(a[0, 1])   # Prints "77"
+```
+
+```python
+import numpy as np
+
+# Create the following rank 2 array with shape (3, 4)
+# [[ 1  2  3  4]
+#  [ 5  6  7  8]
+#  [ 9 10 11 12]]
+a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
+
+# Two ways of accessing the data in the middle row of the array.
+# Mixing integer indexing with slices yields an array of lower rank,
+# while using only slices yields an array of the same rank as the
+# original array:
+row_r1 = a[1, :]    # Rank 1 view of the second row of a
+row_r2 = a[1:2, :]  # Rank 2 view of the second row of a
+print(row_r1, row_r1.shape)  # Prints "[5 6 7 8] (4,)"
+print(row_r2, row_r2.shape)  # Prints "[[5 6 7 8]] (1, 4)"
+
+# We can make the same distinction when accessing columns of an array:
+col_r1 = a[:, 1]
+col_r2 = a[:, 1:2]
+print(col_r1, col_r1.shape)  # Prints "[ 2  6 10] (3,)"
+print(col_r2, col_r2.shape)  # Prints "[[ 2]
+                             #          [ 6]
+                             #          [10]] (3, 1)"
+```
+
+<b>- Integer array indexing </b>
+
+
+
+<b>- Boolean array indexing </b>
+
+
 
 ### [Datatypes]
 
