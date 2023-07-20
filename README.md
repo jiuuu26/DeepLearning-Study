@@ -7,5 +7,5 @@
  [✏️](https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Lecture%204.%20Backpropagation%20and%20Neural%20Networks.md) Lecture 4. Backpropagtion and Neural Networks
 
 ### 📖 CS231n 과제
- [🗝️]([https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Python%20Numpy%20Tutorial](https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Python%20Numpy%20Tutorial.md)) Tutorial <br></br>
+ [🗝️](https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Python%20Numpy%20Tutorial.md) Tutorial <br></br>
  [🗝️](https://github.com/jiuuu26/DeepLearning-Study/blob/main/CS231n/Assignment%201) Assignment 1
