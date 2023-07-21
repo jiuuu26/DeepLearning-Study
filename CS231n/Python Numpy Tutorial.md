@@ -347,19 +347,219 @@ print(col_r2, col_r2.shape)  # Prints "[[ 2]
 
 <b>- Integer array indexing </b>
 
+&nbsp; 정수 배열 인덱싱을 사용하면 다른 배열의 데이터를 사용하여 임의 배열을 구성할 수 있다.   
 
+```python
+import numpy as np
+
+a = np.array([[1,2], [3, 4], [5, 6]])
+
+# An example of integer array indexing.
+# The returned array will have shape (3,) and
+print(a[[0, 1, 2], [0, 1, 0]])  # Prints "[1 4 5]"
+
+# The above example of integer array indexing is equivalent to this:
+print(np.array([a[0, 0], a[1, 1], a[2, 0]]))  # Prints "[1 4 5]"
+
+# When using integer array indexing, you can reuse the same
+# element from the source array:
+print(a[[0, 0], [1, 1]])  # Prints "[2 2]"
+
+# Equivalent to the previous integer array indexing example
+print(np.array([a[0, 1], a[0, 1]]))  # Prints "[2 2]"
+```
+
+&nbsp; 정수 배열 인덱싱은 행렬의 한 행으로부터 한 요소를 선택하거나 바꿀 때 유용하다. 
+
+```python
+import numpy as np
+
+# Create a new array from which we will select elements
+a = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+
+print(a)  # prints "array([[ 1,  2,  3],
+          #                [ 4,  5,  6],
+          #                [ 7,  8,  9],
+          #                [10, 11, 12]])"
+
+# Create an array of indices
+b = np.array([0, 2, 0, 1])
+
+# Select one element from each row of a using the indices in b
+print(a[np.arange(4), b])  # Prints "[ 1  6  7 11]"
+
+# Mutate one element from each row of a using the indices in b
+a[np.arange(4), b] += 10
+
+print(a)  # prints "array([[11,  2,  3],
+          #                [ 4,  5, 16],
+          #                [17,  8,  9],
+          #                [10, 21, 12]])
+```
 
 <b>- Boolean array indexing </b>
 
+&nbsp; Boolean array indexing은 주로 어떤 조건을 만족하는 배열의 요소를 선택하기 위해 사용된다. 
 
+```python
+import numpy as np
+
+a = np.array([[1,2], [3, 4], [5, 6]])
+
+bool_idx = (a > 2)   # Find the elements of a that are bigger than 2;
+                     # this returns a numpy array of Booleans of the same
+                     # shape as a, where each slot of bool_idx tells
+                     # whether that element of a is > 2.
+
+print(bool_idx)      # Prints "[[False False]
+                     #          [ True  True]
+                     #          [ True  True]]"
+
+# We use boolean array indexing to construct a rank 1 array
+# consisting of the elements of a corresponding to the True values
+# of bool_idx
+print(a[bool_idx])  # Prints "[3 4 5 6]"
+
+# We can do all of the above in a single concise statement:
+print(a[a > 2])     # Prints "[3 4 5 6]"
+```
 
 ### [Datatypes]
 
+```python
+import numpy as np
+
+x = np.array([1, 2])   # Let numpy choose the datatype
+print(x.dtype)         # Prints "int64"
+
+x = np.array([1.0, 2.0])   # Let numpy choose the datatype
+print(x.dtype)             # Prints "float64"
+
+x = np.array([1, 2], dtype=np.int64)   # Force a particular datatype
+print(x.dtype)                         # Prints "int64"
+```
+
 ### [Array math]
+
+```python
+import numpy as np
+
+x = np.array([[1,2],[3,4]], dtype=np.float64)
+y = np.array([[5,6],[7,8]], dtype=np.float64)
+
+# Elementwise sum; both produce the array
+# [[ 6.0  8.0]
+#  [10.0 12.0]]
+print(x + y)
+print(np.add(x, y))
+
+# Elementwise difference; both produce the array
+# [[-4.0 -4.0]
+#  [-4.0 -4.0]]
+print(x - y)
+print(np.subtract(x, y))
+
+# Elementwise product; both produce the array
+# [[ 5.0 12.0]
+#  [21.0 32.0]]
+print(x * y)
+print(np.multiply(x, y))
+
+# Elementwise division; both produce the array
+# [[ 0.2         0.33333333]
+#  [ 0.42857143  0.5       ]]
+print(x / y)
+print(np.divide(x, y))
+
+# Elementwise square root; produces the array
+# [[ 1.          1.41421356]
+#  [ 1.73205081  2.        ]]
+print(np.sqrt(x))
+```
+
+ &nbsp; 행렬에서 내적 계산을 하기 위해서는 "x"이 아니라 dot()이라는 함수를 이용해야한다. 참고로 아래의 코드에 보이다시피 x.dot(y)와 np.dot(x,y)는 같은 것이다. 
+
+ ```python
+import numpy as np
+
+x = np.array([[1,2],[3,4]])
+y = np.array([[5,6],[7,8]])
+
+v = np.array([9,10])
+w = np.array([11, 12])
+
+# Inner product of vectors; both produce 219
+print(v.dot(w))
+print(np.dot(v, w))
+
+# Matrix / vector product; both produce the rank 1 array [29 67]
+print(x.dot(v))
+print(np.dot(x, v))
+
+# Matrix / matrix product; both produce the rank 2 array
+# [[19 22]
+#  [43 50]]
+print(x.dot(y))
+print(np.dot(x, y))
+```
+
+&nbsp; 행렬에서 axis(축)의 값으로 sum을 해주는 방향을 정하고 행렬의 합을 구할 수 있다. 
+
+```python
+import numpy as np
+
+x = np.array([[1,2],[3,4]])
+
+print(np.sum(x))  # Compute sum of all elements; prints "10"
+print(np.sum(x, axis=0))  # Compute sum of each column; prints "[4 6]"
+print(np.sum(x, axis=1))  # Compute sum of each row; prints "[3 7]"
+```
 
 ### [Broadcasting]
 
-### [Numpy Documentation]
+ &nbsp; Broadcasting은 다른 모양을 가진 배열들을 가지고 수학적 계산을 할 때 아주 유용하다. 아래의 코드에서 empty_like는 인자로 전달한 행렬과 같은 모양의 행렬을 만드는 함수이다. 
+
+ ```python
+import numpy as np
+
+# We will add the vector v to each row of the matrix x,
+# storing the result in the matrix y
+x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+v = np.array([1, 0, 1])
+y = np.empty_like(x)   # Create an empty matrix with the same shape as x
+
+# Add the vector v to each row of the matrix x with an explicit loop
+for i in range(4):
+    y[i, :] = x[i, :] + v
+
+# Now y is the following
+# [[ 2  2  4]
+#  [ 5  5  7]
+#  [ 8  8 10]
+#  [11 11 13]]
+print(y)
+```
+
+ &nbsp; 위와 같이 반복문을 사용하여 행렬의 합을 구할 수 있지만, 행렬 x의 크기가 커진다면 이 계산은 아주 느려질 것이다. 다음의 코드와 같이 tile 함수를 이용하여 새로운 행렬을 만들어 주어, 각각 반복문으로 더해주기보다는 행렬끼리의 합으로 계산하는 것이 더 좋다. 참고로 tile은 배열을 원하는 모양으로 쌓아 올릴 수 있는 함수로, 인자 값에 어떤 배열을 어떤 형태로 반복할지 넣어주면 된다. 
+
+ ```python
+import numpy as np
+
+# We will add the vector v to each row of the matrix x,
+# storing the result in the matrix y
+x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+v = np.array([1, 0, 1])
+vv = np.tile(v, (4, 1))   # Stack 4 copies of v on top of each other
+print(vv)                 # Prints "[[1 0 1]
+                          #          [1 0 1]
+                          #          [1 0 1]
+                          #          [1 0 1]]"
+y = x + vv  # Add x and vv elementwise
+print(y)  # Prints "[[ 2  2  4
+          #          [ 5  5  7]
+          #          [ 8  8 10]
+          #          [11 11 13]]"
+```
 
 
 ## 💡SciPy
