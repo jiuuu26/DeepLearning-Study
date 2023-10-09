@@ -17,9 +17,9 @@
 # 💻 MachineLearning
 
 ### 📖 Supervised Machine Learning: Regression and Classfication
- [✏️] Supervised vs. Unsupervised Machine Learning
- [✏️] Regression Model
- [✏️] Train the model with gradient descent
+ [✏️] Supervised vs. Unsupervised Machine Learning <br></br>
+ [✏️] Regression Model <br></br>
+ [✏️] Train the model with gradient descent <br></br>
 
 ### 📖 Advanced Learning Algorithms
 
