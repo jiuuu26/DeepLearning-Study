@@ -17,9 +17,9 @@
 # 💻 MachineLearning
 
 ### 📖 Supervised Machine Learning: Regression and Classfication
- [✏️](https://github.com/jiuuu26/Artificial-Intelligence/blob/main/Supervised%20Machine%20Learning%3A%20Regression%20and%20Classfication/Supervised%20vs.%20Unsupervised%20Machine%20Learning.md) Supervised vs. Unsupervised Machine Learning <br></br>
- [✏️] Regression Model <br></br>
- [✏️] Train the model with gradient descent <br></br>
+ [✏️](https://github.com/jiuuu26/Artificial-Intelligence/blob/main/Supervised%20Machine%20Learning%3A%20Regression%20and%20Classfication/Supervised%20vs.%20Unsupervised%20Machine%20Learning.md) Introduction to Machine Learning <br></br>
+ [✏️] Regression with multiple input variables <br></br>
+ [✏️] Classification <br></br>
 
 ### 📖 Advanced Learning Algorithms
 
