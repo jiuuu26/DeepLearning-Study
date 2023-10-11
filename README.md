@@ -36,8 +36,8 @@
  [✏️] Regression with multiple input variables <br></br>
  [✏️] Classification <br></br>
 
-### 📖 Advanced Learning Algorithms
+### 📘 Advanced Learning Algorithms
 
-### 📖 Unsupervised Learning: Recommenders, Reinforcement Learning
+### 📘 Unsupervised Learning: Recommenders, Reinforcement Learning
 
 
