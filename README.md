@@ -33,7 +33,7 @@
 
 ### 📖 Supervised Machine Learning: Regression and Classfication
  [✏️](https://github.com/jiuuu26/Artificial-Intelligence/blob/main/Supervised%20Machine%20Learning:%20Regression%20and%20Classfication/1.%20Introduction%20to%20Machine%20Learning.md) Introduction to Machine Learning <br></br>
- [✏️](https://github.com/jiuuu26/Artificial-Intelligence/blob/main/Supervised%20Machine%20Learning%3A%20Regression%20and%20Classfication/2.%20Regression%20with%20multiple%20input%20variables.md)Regression with multiple input variables <br></br>
+ [✏️](https://github.com/jiuuu26/Artificial-Intelligence/tree/main/Supervised%20Machine%20Learning%3A%20Regression%20and%20Classfication/2.%20Regression%20with%20multiple%20input%20variables)Regression with multiple input variables <br></br>
  [✏️] Classification <br></br>
 
 ### 📘 Advanced Learning Algorithms
