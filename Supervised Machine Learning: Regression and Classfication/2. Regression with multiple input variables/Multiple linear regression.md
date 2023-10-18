@@ -109,5 +109,135 @@ print(f"a[:]     = {c}")
 ```
 
 ##### &nbsp; Single vector operations
+```python
+a=np.array([1,2,3,4])
+print(f"a       : {a}")
 
-   
+# 배열 a의 요소들 모두 음수화
+b=-a
+print(f"b = -a   : {b}")
+
+# 배열의 모든 요소 합계
+b=np.sum(a)
+print(f"b=np.sum(a) : {b}")
+
+# 배열 요소들의 평균
+b=np.mean(a)
+print(f"b=np.mean(a) : {b}")
+
+# 배열의 모든 요소에 제곱
+b=a**2
+print(f"b = a**2    : {b}")
+
+'''
+a       : [1 2 3 4]
+b = -a   : [-1 -2 -3 -4]
+b=np.sum(a) : 10
+b=np.mean(a) : 2.5
+b = a**2    : [ 1  4  9 16]
+'''
+```   
+##### &nbsp; Vector Vector element-wise operations
+&nbsp; 배열끼리의 연산은 인덱스가 같은 요소들끼리 계산을 한다. 두 배열의 요소 개수가 맞지 않으면 error가 발생한다. 
+```python
+a=np.array([1,2,3,4])
+b=np.array([-1,-2,-3,-4])
+print(f"a + b = {a+b}")
+
+# 두 배열의 요소 개수가 맞지 않을 때
+c=np.array([1,2])
+try:
+    d=a+c
+except Exception as e:
+    print("The error message you'll see is: ")
+    print(e)
+
+'''
+a + b = [0 0 0 0]
+The error message you'll see is:
+operands could not be broadcast together with shapes (4,) (2,)     
+'''
+```
+
+##### &nbsp; Scalar Vector operations
+&nbsp; 벡터는 스칼라 값에 의해 값이 변경될 수 있다. 아래의 코드에서 스칼라는 벡터의 모든 요소들에 곱해진다.
+```python
+a=np.array([1,2,3,4])
+b=5*a
+print(f"a*5 : {b}")
+
+'''
+a*5 : [ 5 10 15 20]
+'''
+```
+
+#### &nbsp; Vector Vector dot product
+![image](https://github.com/jiuuu26/Artificial-Intelligence/assets/110098218/3ab2492b-706b-49f6-9899-b9687f2db563)
+
+ &nbsp;dot product는 두 벡터의 차원이 같아야하며, 결과는 스칼라 값을 반환한다. 
+
+```python
+# 반복문을 사용한 두 벡터 간의 곱
+def my_dot(a,b):
+    x=0
+    for i in range (a.shape[0]):
+        x=x+a[i]*b[i]
+    return x
+
+# 1차원 배열로 테스트
+a=np.array([1,2,3,4])
+b=np.array([-1,4,3,2])
+print(f"my_dot(a,b) = {my_dot(a,b)}")
+
+'''
+my_dot(a,b) = 24
+'''
+
+# np.dot 사용
+c=np.dot(a,b)
+print(f"numpy 1차원 np.dot(a,b) = {c}, np.dot(a,b).shape = {c.shape}")
+c=np.dot(b,a)
+print(f"numpy 1차원 np.dot(b,a) = {c}, np.dot(b,a).shape = {c.shape}")
+
+'''
+numpy 1차원 np.dot(a,b) = 24, np.dot(a,b).shape = ()
+numpy 1차원 np.dot(b,a) = 24, np.dot(b,a).shape = ()
+```
+
+##### &nbsp; The Need for Speed: vector vs for loop
+```python
+# vector vs for loop 속도 비교
+np.random.seed(1)
+# 매우 큰 배열 생성
+a=np.random.rand(10000000)
+b=np.random.rand(10000000)
+
+tic=time.time()
+c=np.dot(a,b)
+toc=time.time()
+print(f"np.dot(a,b) = {c: .4f}")    #소수점 4자리까지 출력
+print(f"벡터화 버전 시간: {1000*(toc-tic):.4f}ms")
+
+tic=time.time()
+c=my_dot(a,b)
+toc=time.time()
+print(f"my_dot(a,b) = {c: .4f}")  
+print(f"for 루프 버전 시간: {1000*(toc-tic):.4f}ms")
+
+# 메모리에서 큰 배열 제거
+del(a)
+del(b)
+
+'''
+np.dot(a,b) =  2501072.5817
+벡터화 버전 시간: 7.9291ms
+my_dot(a,b) =  2501072.5817
+for 루프 버전 시간: 2994.1206ms
+'''
+```
+
+&nbsp; 위 코드에서 볼 수 있듯이 벡터화는 속도를 굉장히 높여준다. 벡터화를 사용하면 하드웨어에서 병렬처리가 가능하기 때문이다. SIMD(Single Instruction Multiple Data) pipelines은 다중 계산을 병렬로 처리할 수 있게 한다. 이것은 머신러닝에서 데이터 셋의 크기가 매우 클 때 중요하다. 
+
+
+
+
