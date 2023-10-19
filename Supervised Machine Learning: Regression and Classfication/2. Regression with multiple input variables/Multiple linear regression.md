@@ -338,5 +338,4 @@ a[1] = [10 11 12 13 14 15 16 17 18 19], a[1].shape = (10,), a 1-D array
 '''
 ```  
 <br></br>
-## 💡Multiple Variable Linear Regression
 
